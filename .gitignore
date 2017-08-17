@@ -1,0 +1,4 @@
+application
+database
+!application/.gitignore
+.idea
