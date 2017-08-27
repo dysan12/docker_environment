@@ -2,3 +2,4 @@ application
 database
 !application/.gitignore
 .idea
+scripts

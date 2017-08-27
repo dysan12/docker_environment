@@ -2,7 +2,7 @@ version: "3"
 
 services: 
     web:
-        #image: dysan12/qms:nginx-server-v1
+        #image: nginx:alpine
         build:
             context: ./nginx
         ports:
@@ -15,7 +15,7 @@ services:
         build:
             context: ./php
         environment:
-            XDEBUG_CONFIG: "remote_host=192.168.99.100 remote_enable=on remote_autostart=off idekey=PHPSTORM remote_connect_back=1"
+            XDEBUG_CONFIG: "remote_host=192.168.2.101 remote_port=9000 remote_enable=on remote_autostart=off idekey=PHPSTORM"
         volumes:
             - ./application:/application
         expose:
@@ -32,7 +32,7 @@ services:
             - MYSQL_USER=dysan
             - MYSQL_PASSWORD=qms12
         volumes:
-            - ./database:/var/lib/mysql
+            - /database:/var/lib/mysql
         ports:
             - "3306:3306"
     composer:
@@ -41,3 +41,4 @@ services:
             - install
         volumes:
             - ./application:/app
+            

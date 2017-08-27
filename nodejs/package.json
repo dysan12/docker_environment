@@ -1,0 +1,10 @@
+{
+    "name": "webqms_project",
+    "version": "1.0.0",
+    "description": "Webqms Project",
+    "scripts": {
+        "start": "node ./index.js"
+    },
+    "author": "Michal Gaj",
+    "private": true
+}
