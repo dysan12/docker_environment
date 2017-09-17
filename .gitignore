@@ -3,3 +3,4 @@ database
 !application/.gitignore
 .idea
 scripts
+docker-compose.yml
