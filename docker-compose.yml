@@ -15,29 +15,26 @@ services:
         build:
             context: ./php
         environment:
-            XDEBUG_CONFIG: "remote_host=192.168.2.101 remote_port=9000 remote_enable=on remote_autostart=off idekey=PHPSTORM"
+            XDEBUG_CONFIG: "remote_host=192.168.56.1 remote_port=9000 remote_enable=on remote_autostart=off idekey=PHPSTORM"
         volumes:
             - ./application:/application
         expose:
             - "9000"
     database:
-        image: mariadb:10.0.20
-        #build:
-        #    context: ./mariadb
-        #command: 
-        #     - mysql_upgrade
+        build:
+            context: ./mariadb
         environment:
-            - MYSQL_ROOT_PASSWORD=qms12
-            - MYSQL_DATABASE=database
-            - MYSQL_USER=dysan
-            - MYSQL_PASSWORD=qms12
+            - MARIADB_ROOT_PASSWORD=qms12
+            - MARIADB_DATABASE=webqms
+            - MARIADB_USER=dysan
+            - MARIADB_PASSWORD=qms12
         volumes:
-            - /database:/var/lib/mysql
+            - ./database:/bitnami
         ports:
             - "3306:3306"
     composer:
         image: composer:1.5.1
-        command: 
+        command:
             - install
         volumes:
             - ./application:/app
